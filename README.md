@@ -14,3 +14,16 @@ PENE-003-C
 andy.dwyer
 BurtMacklinFBI
 ssh andy.dwyer@10.9.0.3
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+
+
+
+
+
+
+
+
+
+https://quizlet.com/723540383/os-pes-flash-cards/
