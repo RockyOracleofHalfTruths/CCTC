@@ -1,4 +1,3 @@
-# CCTC
 Stuff for Cyber Common Technical Core
 #9Ge%z7Vn]~@<!;bL+X-BlH
 #windows_opstation_Iyig win_ops    
