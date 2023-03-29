@@ -2,3 +2,10 @@
 
 ###Windows_PowerShell_CimClasses2
 
+
+Which program starts with every CMD and PowerShell instance in Windows 7 and later? 
+
+
+
+What registry key creates the Wow6432Node to represent 32-bit applications that run on a 64-bit version of Windows? HKEY_LOCAL_MACHINE\SOFTWARE
+
