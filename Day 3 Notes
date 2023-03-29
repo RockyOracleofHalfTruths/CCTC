@@ -1,1 +1,79 @@
-
+    1  exit
+    2  pwd
+    3  whoami
+    4  which bash
+    5  which pwd
+    6  uname -a
+    7  who
+    8  who -b
+    9  who -r
+   10  who -a
+   11  ip
+   12  ip addr
+   13  ip addr show
+   14  history
+   15  ip neigh
+   16  arp
+   17  ip route
+   18  ls
+   19  netstat
+   20  netstat -a
+   21  netstat -at
+   22  netstat -au
+   23  netstat -l
+   24  netstat -ap | grep journal
+   25  netstat -s
+   26  sudo -l
+   27  ls -shilat
+   28  man ss
+   29  ss -tcp
+   30  iptables -l
+   31  sudo -l
+   32  cd /
+   33  ls -shila
+   34  man ls
+   35  ls --help
+   36  a=200
+   37  echo $a
+   38  directories=$(ls /)
+   39  echo $directories
+   40  ls /
+   41  $directories unset
+   42  echo $directories
+   43  echo $directories 1> cd $HOME
+   44  cd $HOME
+   45  echo $directories 1> thisisanewfile
+   46  cd $HOME
+   47  ls
+   48  ls doesntexist 2> errorfile
+   49  ls -Rlisa /etc | grep syslog
+   50  ls -Rlisa /etc 2> /dev/null | grep syslog
+   51  objects=$(ls -d /etc/*)
+   52  echo objects
+   53  echo $objects
+   54  for object in $objects; do if [ -d $object ] ; then echo "$object is a directory"; else echo "$object is a file"; fi; d
+one
+   55  find /etc -type d -maxdepth 1
+   56  find /etc -type f -maxdepth 1
+   57  cd /
+   58  cd /bin
+   59  ls -ld $PWD/*
+   60  id
+   61  cat /etc/passwd
+   62  cd $HOME
+   63  ls
+   64  cat /etc/group | garviel
+   65  cat /etc/group | grep garviel
+   66  ls -lisa /bin/dd
+   67  mkdir testdir
+   68  chmod 750 testdir
+   69  echo "can anyone read me" > testdir/canttouchthis
+   70  ls -shilat testdir
+   71  find / -perm /4000 2> /dev/null -exec ls -la {} \;
+   72  ls -l /etc
+   73  ls -l /etc   | awk -F " " '{print$3","$4","$9"}' > file.csv
+   74  ls -l /etc   | awk -F " " '{print$3","$4","$9}' > file.csv
+   75  cat files.csv
+   76  cat file.csv
+   77  cat /etc/passwd | grep root | sed s/root/bacon/g
+   78  history
