@@ -9,3 +9,108 @@ Which program starts with every CMD and PowerShell instance in Windows 7 and lat
 
 What registry key creates the Wow6432Node to represent 32-bit applications that run on a 64-bit version of Windows? HKEY_LOCAL_MACHINE\SOFTWARE
 
+################################################################ LINUX ###################################################################################
+
+What command lists the contents of directories in Linux/Unix systems?  
+ls
+
+For the ls command, what arguments, or switch options, will allow you to print human-readable file sizes in a long-list format?
+ls -lh
+
+What character will pipe the standard output from echo "I’m a plumber" to another command, as standard input?
+|
+
+What argument/switch option, when used with man, will search the short descriptions and man-page-names for a keyword that you provide?
+man -k
+
+https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+What is the absolute path to the root directory?
+/
+
+What is the absolute path to the default location for configuration files?
+/etc
+
+What is the directory that contains executable programs (binaries) which are needed in single user mode, to bring the system up or to repair it?
+/bin
+
+What is the absolute path to the directory which contains non-essential binaries that are accessible by standard users as well as root?
+/usr/bin
+
+An absolute path to a directory which contains binaries only accessible by the root user, or users in the root group.
+/sbin
+
+What is the absolute path for the binary cat man-page?
+/usr/share/man/man1/cat.1.gz
+
+Search the man pages for the keyword digest. Then, use one of the binaries listed to hash the string OneWayBestWay using the largest sha hash available.
+man -k digest
+echo "OneWayBestWay" > test.txt
+sha512sum test.txt
+
+
+
+Use File: /home/garviel/Encrypted This file contains encrypted contents. Identify its file type, then decode its contents.
+unzip Encrypted
+                  Archive:  Encrypted
+                  extracting: cipher
+                  extracting: symmetric  
+file cipher
+                  cipher: openssl enc'd data with salted password
+file symmetric
+                  symmetric: ASCII text
+cat symmetric
+                  AES128KEY
+openssl enc -d -aes-128-cbc -in cipher -out solved -k AES128Key
+                  DeCrypt
+
+
+
+Search the user home directories to find the file with the second-most lines in it.
+find -type f -exec wc -l {} +
+                                     9 ./Encrypted
+                                 20000 ./numbers
+                                     1 ./errorfile
+                                     9 ./.bash_logout
+                                     2 ./.lesshst
+                                    40 ./Inquisition_Targets
+                                     1 ./.bash_history
+                                  2825 ./output.xml
+                                   183 ./file.csv
+                                    29 ./.profile
+                                  6525 ./connections
+                                   867 ./NMAP_all_hosts.txt
+                                     1 ./testdir/canttouchthis
+                                   990 ./paths
+                                 83892 ./conn.log
+                                    30 ./Battlefield/titan_commands
+                                    24 ./Battlefield/minefield_map
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
