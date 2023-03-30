@@ -1,13 +1,31 @@
 ################################################################01 Windows Power Shell#####################################################################
 
-###Windows_PowerShell_CimClasses2
-
-
 Which program starts with every CMD and PowerShell instance in Windows 7 and later? 
 
 
 
-What registry key creates the Wow6432Node to represent 32-bit applications that run on a 64-bit version of Windows? HKEY_LOCAL_MACHINE\SOFTWARE
+##################################################### 02 Windows Powershell Profiles ####################################################################
+
+Which PowerShell profile has the lowest precedence?
+
+
+Which PowerShell profile has the highest precedence?
+
+
+Which PowerShell variable stores the current user’s home directory?
+
+
+Which PowerShell variable stores the installation directory for PowerShell?
+$PsHome
+
+
+Which PowerShell variable stores the path to the "Current User, Current Host" profile?
+
+
+What command would you run to view the help for PowerShell Profiles?
+
+What command would tell you if there was a profile loaded for All Users All Hosts?
+Test-Path -Path $profile.AllUsersAllHosts
 
 ################################################################ LINUX ###################################################################################
 
@@ -24,6 +42,7 @@ What argument/switch option, when used with man, will search the short descripti
 man -k
 
 https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+
 What is the absolute path to the root directory?
 /
 
@@ -47,8 +66,6 @@ man -k digest
 echo "OneWayBestWay" > test.txt
 sha512sum test.txt
 
-
-
 Use File: /home/garviel/Encrypted This file contains encrypted contents. Identify its file type, then decode its contents.
 unzip Encrypted
                   Archive:  Encrypted
@@ -62,8 +79,6 @@ cat symmetric
                   AES128KEY
 openssl enc -d -aes-128-cbc -in cipher -out solved -k AES128Key
                   DeCrypt
-
-
 
 Search the user home directories to find the file with the second-most lines in it.
 find -type f -exec wc -l {} +
@@ -84,6 +99,89 @@ find -type f -exec wc -l {} +
                                  83892 ./conn.log
                                     30 ./Battlefield/titan_commands
                                     24 ./Battlefield/minefield_map
+
+
+
+############################################################## 05 Windows Registry #####################################################################
+
+What Windows registry path is the Volatile Hive?
+
+
+What registry key creates the Wow6432Node to represent 32-bit applications that run on a 64-bit version of Windows?
+
+
+In what registry path are the BOOT_START drivers located?
+
+
+What start value do BOOT_START drivers have in the registry?
+
+
+During kernel initialization, what registry location is read containing all SYSTEM_START drivers and services with a start value of 0x1?
+HKLM\SYSTEM\CurrentControlSet\Services
+
+Auto_START drivers and services are loaded after kernel initialization. What start value do they have in the registry?
+0x2
+
+What start value do DEMAND_START drivers and services have in the registry?
+0x3
+
+When accessing a remote registry which are the only 2 accessible HKEYs?
+HKLM and HKU
+
+What PowerShell cmdlet will list currently mapped drives?
+Get-PSDrive
+
+What is the native Windows GUI tool for managing the registry?
+regedit.exe
+
+What registry hive contains all machine settings?
+HKLM
+
+What registry hive contains all user settings?
+HKEY_USERS
+
+What registry hive contains only the currently logged-in user's settings?
+
+What PowerShell command will list all the subkeys and contents in the current directory and/or will list all the subkeys and the contents of a directory you specify?
+Get-ChildItem
+
+What PowerShell command will list only the contents of a registry key or subkey?
+Get-Item
+
+What registry subkey runs every time the machine reboots? 
+
+
+####################################################### Windows Boot Process #############################################################################
+
+What is the smallest addressable unit on a hard disk
+sector
+
+What term describes a logical division of a single storage device?
+partition
+
+What term describes a formatted storage device that can span 1 or more partitions, has a single file system and is assigned a drive letter?
+
+
+
+
+The system is booting into safe mode. Identify the flag from the command-line output of the command used to diagnose boot issues.
+bcdedit
+
+The system is booting into safe mode. Correct that, and reboot into the desktop. The flag is on the desktop.
+bcdedit /deletevalue safeboot 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
