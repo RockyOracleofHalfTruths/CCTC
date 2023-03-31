@@ -82,6 +82,44 @@ one
 
 ########################################################## Linux Boot Process############################################
 
+lsblk               #information on block devices
+sudo xxd -l 512 -g 1 /dev/sda     #l is length in this case, g is grouping
+sudo xxd -s 446 -l 64 -g 1 /dev/sda   #skip the first 446 bytes which is the bootstrap code area to get to the first partition
+
+sudo dd if=/dev/sda bs =512 count=1 of=/home/username/MBRCopy
+                            1+0 records in 
+                            1+0 records out
+                            512 bytes copied, time, rate of data flow
+sudo dd if=/home/username/MBRCopy bs=512 count=1 | md5sum
+cat /boot/grub/cfg
+ltrace -S cat /etc/passwd
+
+ps --no-headers -o comm1
+file /sbin/init
+ls /usr/lin/systemd
+systemct1 is-active --quiet
+systemctl                      #only in systemd
+cat /etc/inittab
+alias ll='ls -halF'
+ll /etc/rc0.d/
+ls -shila /etc/
+ls -lisa /lib/systemd/system/default.target
+systemctl get-default
+systemctl show graphical.target      #able to browse the different systemd targets
+systemctl list-dependencies 
+systemctl show -p Wants graphical.target
+systemctl list-unit-files
+systemctl cat ssh.service
+cat /etc/environment
+cat /etc/profile
+cd &HOME
+ls -shila
+# a single dot before a file name means that is a hidden file unseen by a regular user
+vi .profile 
+vi ./.vimrc
+
+ https://www.fsf.org/news/talos-ii-mainboard-and-talos-ii-lite-mainboard-now-fsf-certified-to-respect-your-freedom
+ 
 
 
 
