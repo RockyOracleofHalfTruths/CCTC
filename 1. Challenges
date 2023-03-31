@@ -142,6 +142,10 @@ HKEY_USERS
 
 What registry hive contains only the currently logged-in user's settings?
 
+
+The HKEY_CURRENT_USER registry hive is a symbolic link to another registry subkey. What is the subkey that it is linked to?
+HKEY_USERS\S-1-5-21-1234567890-1234567890-1234567890-1001
+
 What PowerShell command will list all the subkeys and contents in the current directory and/or will list all the subkeys and the contents of a directory you specify?
 Get-ChildItem
 
@@ -149,6 +153,30 @@ What PowerShell command will list only the contents of a registry key or subkey?
 Get-Item
 
 What registry subkey runs every time the machine reboots? 
+HKLM\Software\Microsoft\Windows\CurrentVersion\Run
+
+What registry subkey runs every time a user logs on? 
+HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Run
+
+What registry subkey runs a single time, then deletes its value once the machine reboots? The flag is the full path, using PowerShell.
+HKLM\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+What registry subkey runs a single time, then deletes its value when a user logs on?
+HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce
+
+
+
+###################################################### Windows Alternate Data Stream #################################################################
+
+
+
+
+
+
+
+
+
+
 
 
 ####################################################### Windows Boot Process #############################################################################
@@ -179,9 +207,19 @@ OxFF
 How many bits are in a nibble and a byte?
 4,8
 
-How many bits does a single Hexadecimal character represent?
+How many bytes does a single Hexadecimal character represent?
+17
 
+How large is the Master Boot Record and what directory is it located in?
 
+What are the maximum and minimum value a single Hexadecimal digit can contain?
+0x0-0xF
+
+What are the maximum and minimum values, in decimal notation, that a single Hexadecimal digit can represent?
+0-15
+
+Solve the following equation: 0x31A + 0x43
+0x35D
 
 
 
