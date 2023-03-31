@@ -80,7 +80,7 @@ one
 
 
 
-########################################################## Linux Boot Process############################################
+########################################################## Linux Boot Process ###################################################################
 
 lsblk               #information on block devices
 sudo xxd -l 512 -g 1 /dev/sda     #l is length in this case, g is grouping
