@@ -171,6 +171,15 @@ The system is booting into safe mode. Correct that, and reboot into the desktop.
 bcdedit /deletevalue safeboot 
 
 
+#################################################### Linux Boot Process ###############################################################################
+
+0x31A-0x21B
+OxFF
+
+How many bits are in a nibble and a byte?
+4,8
+
+How many bits does a single Hexadecimal character represent?
 
 
 
