@@ -77,3 +77,16 @@ one
    76  cat file.csv
    77  cat /etc/passwd | grep root | sed s/root/bacon/g
    78  history
+
+
+
+########################################################## Linux Boot Process############################################
+
+
+
+
+
+
+
+
+
