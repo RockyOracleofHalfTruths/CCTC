@@ -110,6 +110,13 @@ find -type f -exec wc -l {} +
                                     30 ./Battlefield/titan_commands
                                     24 ./Battlefield/minefield_map
 
+Find the directory named Bibliotheca. Enter the absolute path to the directory
+sudo find / -type d -name "Bibliotheca" 2>/dev/null
+
+
+Identify the number of users with valid login shells, who can list the contents of the Bibliotheca directory.
+cd /media/Bibliotheca 
+grep -Ff /etc/shells /etc/passwd         #only real uses have valid log in shells
 
 
 ############################################################## 05 Windows Registry #####################################################################
