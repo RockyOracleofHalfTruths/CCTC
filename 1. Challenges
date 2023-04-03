@@ -4,9 +4,16 @@ Whoami
 pwd
 
 
+Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside.
+mkdir Omega1000Solve
+Copy-Item -Path "C:\Users\CTF\documents\Omega1000.zip" -Destination "C:\Users\CTF\documents\Omega1000Solve\Omega1000.zip"
+for($i = 1000; $i  -ge 1; $i--)
+>> {
+>> Expand-Archive -Path "C:\Users\CTF\documents\Omega1000solve\Omega$i.zip" -DestinationPath "C:\Users\CTF\documents\Omega1000solve"
+>> }
 
 
-
+(Get-content words.txt | select-string aa[a-g]).count
 
 ################################################################01 Windows Power Shell#####################################################################
 
@@ -143,7 +150,7 @@ What start value do DEMAND_START drivers and services have in the registry?
 0x3
 
 When accessing a remote registry which are the only 2 accessible HKEYs?
-HKLM and HKU
+HKLM and HKU1182961511
 
 What PowerShell cmdlet will list currently mapped drives?
 Get-PSDrive
@@ -238,6 +245,132 @@ What are the maximum and minimum values, in decimal notation, that a single Hexa
 Solve the following equation: 0x31A + 0x43
 0x35D
 
+
+
+######################################################Windows Process Validity#################################################################################
+
+What is the full path to folder used when Windows redirects 32 bit applications running on a 64bit system?
+C:\Windows\SysWOW64
+%windir% is an environment variable that represents the path to the Windows installation directory. In most cases, this is C:\Windows. The %windir% variable can be used in commands and scripts to reference files and folders within the Windows directory without having to hardcode the full path.
+
+What Windows System Service starts the kernel and user mode subsystems?
+Session Manager Subsystem or ssms.exe
+
+What Windows system process:
+    Runs in session 0
+    is responsible for enforcing the security policy on the system
+    Performs all logon functions
+    Handles password changes
+    Creates access tokens
+    Writes to the Windows Security Log
+LSASS, Local Security Authority Subsystem Service
+
+
+
+Which is spoolsv.exe?
+server-based
+
+Which service type is explorer.exe?
+user-based
+
+During a network survey you observed a host running inetinfo.exe service. What type of server might you have found?
+
+
+During a reconnaissance mission you enumerated a host running the dns.exe service. Is this a user pc or a server?
+server
+
+How does a User-Mode Service request resources?
+System Calls
+
+Passively copying currently running processes for comparison later is known as?
+
+What part of the process executes?
+thread
+
+Windows has how many process priority levels?
+32
+
+What Sysinternals tool shows malware persistence locations in tabs within its GUI?
+Autoruns
+
+What Sysinternals tool is used to investigate processes?
+procexp
+
+What Sysinternals tool can be used to investigate network connection attempts?
+TCPView
+
+What Sysinternals tool can view permissions?
+Psexec
+
+What Sysinternals tool allows us to view and modify handles?
+Handle
+
+What is the default Windows download directory that everyone has access to? The flag is the absolute path to the directory.
+C:\Users\Public\Downloads
+
+What Sysinternals tool shows service load order?
+LoadOrder
+
+What is the service name of Windows Defender Firewall?
+MpsSvc
+
+What SysInternals tool reports .dlls loaded into processes?
+procexp
+
+What SysInternals tool reports .dlls loaded into processes?
+ListDLLs
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 What syntax do PowerShell cmdlets follow?
 verb-noun
 What PS command will list all PowerShell cmdlets?
@@ -326,7 +459,7 @@ Hint: There are multiple "words" on each line.
 Count the number of times az appears in the words.txt file on the CTF user's desktop.
 2754
 (get-content words.txt | findstr -i az).count
-Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside.
+Use a PowerShell loop to unzip the n file 1,000 times and read what is inside.
 Note: Make sure you back up the .zip file to a different directory before attempting this challenge.
 kung-fu
 foreach ($i in 1000..1) {
@@ -750,7 +883,7 @@ What is the default Windows download directory that everyone has access to? The 
 C:\Users\Public\Downloads
 What Sysinternals tool shows service load order?
 LoadOrder
-What is the service name of Windows Defender Firewall?
+What is the service name of Windows Defender Firewall?What is the full path to folder used when Windows redirects 32 bit applications running on a 64bit system?
 MpsSvc.exe
 What SysInternals tool reports .dlls loaded into processes?
 ListDLLs
