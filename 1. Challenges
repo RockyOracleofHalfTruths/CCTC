@@ -238,6 +238,887 @@ What are the maximum and minimum values, in decimal notation, that a single Hexa
 Solve the following equation: 0x31A + 0x43
 0x35D
 
+What syntax do PowerShell cmdlets follow?
+verb-noun
+What PS command will list all PowerShell cmdlets?
+get-command
+What PowerShell command will list all verbs?
+get-verb
+BASH commands output strings. PowerShell commands output what data type?
+objects
+All PowerShell objects are comprised of what two things?
+Flag format: things,things
+methods, properties
+What command will list all things that make up a PowerShell object?
+get-member
+What PowerShell command will list PowerShell aliases?
+get-alias
+What PowerShell command lists all of the contents of a directory?
+get-childitem
+What is the basic cmdlet that displays help about Windows Powershell cmdlets and concepts?
+get-help
+PowerShell "help files" don't show the entire help file with a basic command. What switch option shows the entire help file?
+-full
+What PowerShell command will update the PowerShell "help files" to the latest version?
+update-help
+What help switch will show you the "help files" on Microsoft's website, in your default browser?
+-online
+What command will start the Chrome browser on your machine?
+start-process Chrome
+What command using a PS Method will stop chrome?
+Flag is the full command.
+(get-process chrome).kil()
+What PowerShell command (without using a method) will stop the Chrome process?
+Stop-process -Name Chrome
+PowerShell doesn't have a native cmdlet that will give you processor information (such as get-processor or get-cpu). Knowing this information might be necessary. What command would give you information about the system's processor?
+get-WmiObject Win32_Processor
+What PowerShell command will read a text file?
+get-content
+What PowerShell command will allow for counting lines in a file, averaging numbers, and summing numbers?
+measure-object
+What PowerShell command searches for text patterns in a string?
+select-string
+Users' files are stored in their corresponding home directory. What is the literal path to all home directories on a Windows 10 system?
+C:\Users\student
+echo $HOME
+How many properties are available for the get-process cmdlet?
+52
+get-process | get-member -MemberType Property
+How many aliases does PowerShell have for listing the contents of a directory?
+3
+When requesting the help file for the get-process cmdlet, what full command is the 9th example given?
+get-process powershell
+To complete this challenge, find the description of the Lego Land service.
+i_love_legos
+get-wmiobject win32_service | select Name,Description
+In the CTF folder on the CTF User's Desktop, count the number of words in words2.txt.
+5254
+cd into
+cd Users\CTF\Desktop\CTF
+Get-Content words2.txt | measure-object -word
+Count the number of files in the Videos folder in the CTF user's home directory.
+925
+(ls).count
+Find the only line that makes the two files in the CTF user's Downloads folder different.
+Hint The flag is the string (not line number).
+popeye
+compare-object (get-content new.txt) (Get-Content old.txt)
+The password is the 21st line from the top, in ASCII alphabetically-sorted, descending order of the words.txt file.
+Note: File location is CTF user’s Desktop in CTF folder.
+ZzZp
+get-content words.txt | sort -Descending | select -skip 20 -first 1
+Count the number of unique words in words.txt, found on the CTF user's desktop, in the CTF folder.
+456976
+(get-content words.txt | sort -unique).count
+How many methods are available for the get-process cmdlet?
+19
+get-process | get-member -MemberType Method
+Count the number of folders in the Music folder in the CTF user's profile.
+411
+(ls).count
+Count the number of times, case-insensitive, gaab is listed in words.txt in the CTF folder on the CTF user's desktop.
+1
+(get-content words.txt | findstr -i gaab).count
+Count the number of words, case-insensitive, with either a or z in a word, in the words.txt file on the CTF user's desktop.
+Hint: There are multiple "words" on each line.
+160352
+(get-content words.txt | findstr -i [a,z]).count
+Count the number of times az appears in the words.txt file on the CTF user's desktop.
+2754
+(get-content words.txt | findstr -i az).count
+Use a PowerShell loop to unzip the Omega file 1,000 times and read what is inside.
+Note: Make sure you back up the .zip file to a different directory before attempting this challenge.
+kung-fu
+foreach ($i in 1000..1) {
+>> Get-ChildItem .\Omega$i.zip -ErrorAction SilentlyContinue | Expand-Archive -DestinationPath. -ErrorAction SilentlyContinue }
+- look at last file - 
+Expand-Archive .\Omega1.zip
+- keep expanding archive until you get to Omega1.txt file
+cat .\Omega1\
+On the CTF user's desktop, count the number of words in words.txt that meet the following criteria:
+a appears at least twice consecutively
+and is followed immediately by any of the letters a through g
+Example: aac...aaa...
+357
+(get-content words.txt | select-string 'a{2}[a-g]').count
+Which PowerShell profile has the lowest precedence?
+current user, current host
+Which PowerShell profile has the highest precedence?
+all users, all hosts
+Which PowerShell variable stores the current user’s home directory?
+$Home
+Which PowerShell variable stores the installation directory for PowerShell?
+$PsHome
+Which PowerShell variable stores the path to the "Current User, Current Host" profile?
+$PROFILE
+What command would you run to view the help for PowerShell Profiles?
+get-help about_Profiles
+What command would tell you if there was a profile loaded for All Users All Hosts?
+Test-Path -Path $profile.AllUsersAllHosts
+Malware is running in a PowerShell profile on the File-Server. Based on PowerShell profile order of precedence (what is read first), find the correct flag.
+I am definitely not the malware
+gc C:\Windows\System32\WindowsPowerShell\v1.0\profile.ps1
+What command lists the contents of directories in Linux/Unix systems?
+ls
+For the ls command, what arguments, or switch options, will allow you to print human-readable file sizes in a long-list format?
+ls -lh
+What character will pipe the standard output from
+echo "I’m a plumber"
+to another command, as standard input?
+|
+What argument/switch option, when used with man, will search the short descriptions and man-page-names for a keyword that you provide?
+man -k
+What is the absolute path to the root directory?
+/
+What is the absolute path to the default location for configuration files?
+/etc
+What is the directory that contains executable programs (binaries) which are needed in single user mode, to bring the system up or to repair it?
+/bin
+What is the absolute path to the directory which contains non-essential binaries that are accessible by standard users as well as root?
+/usr/bin
+An absolute path to a directory which contains binaries only accessible by the root user, or users in the root group.
+/sbin
+What is the absolute path for the binary cat man-page?
+/usr/share/man/man1/cat.1.gz
+Search the man pages for the keyword digest. Then, use one of the binaries listed to hash the string OneWayBestWay using the largest sha hash available.
+a81bc463469ee1717fc9e388e3799c653f63a3de5e9496b5707b56488b046cbf75665235d316c5c0053a597dc7d40c917a2d9006fe35e9cb47766c05ac71989b
+echo OneWayBestWay | sha512sum
+Use File: /home/garviel/Encrypted
+This file contains encrypted contents. Identify its file type, then decode its contents.
+DeCrypt
+- garviel@terra:~$ openssl aes-128-cbc -d -in cipher -out cipherold -kfile symmetric
+- cat cipher
+- symmetric is the file with the key
+Search the user home directories to find the file with the second-most lines in it. Hint: Exclude the VDI file! The flag is the number of lines in the file.
+20000 ./garviel/conn.log
+- garviel@terra:~$ find . -type f -exec wc -l {} \; | sort -rn
+Read the file that contains the user database for the machine. Identify a strange comment.
+Traitor
+garviel@terra:/etc$ cat passwd | cut -d ':' -f 5
+Identify all members of the Lodge group. List their names in alphabetical order with a comma in between each name.
+Flag Format: name,name,name
+aximand,erebus,ezekyle,garviel,sejanus,tarik
+garviel@terra:/home$ cat /etc/group | sort
+Find the user with a unique login shell.
+nobody 
+- garviel@terra:~$ cat /etc/passwd | awk -F ":" '{print$7}'| sort -u
+- cat /etc/passwd | grep "sh"
+- look for unique login names
+Identify the algorithm, the amount of salted characters added, and the length of the hashed password in the file that stores passwords.
+Hint: Research 'padding'...
+Flag format: algorithm,#characters,#length
+sudo cat /etc/shadow | cut -d ':' -f 2 | sort
+...
+Find the directory named Bibliotheca. Enter the absolute path to the directory.
+/media/Bibliotheca
+Identify the number of users with valid login shells, who can list the contents of the Bibliotheca directory.
+15
+(18-3)
+cat /etc/passwd | grep -v nologin | wc
+The permissions that user sejanus has on /media/Bibliotheca, in octal format.
+Flag format: #
+HINT: Think about groups...
+cat /etc/group | grep -e 'sejanus'
+5 = (r-x)
+- to find group of sejanus run "cat /etc/group | grep sejanus"
+- ls -lisa /media for group permissions
+Locate the file within /media/Bibliotheca that is modifiable by the only user that is part of the Chapter group, but not part of the Lodge group.
+Hint: Not the hidden file...
+Codex_Astartes
+-garviel@terra:/media/Bibliotheca$ ls -lisa Bibliotheca_unus/
+- looking for file that only is user modifiable - -rw-r-----
+Identify the file within /media/Bibliotheca where the owning group has more rights than the owning user.
+Codex_Hereticus
+- garviel@terra:/media/Bibliotheca$ ls -lisa Bibliotheca_tribus/
+- look for file that owning group has permissions - -r----xrwx
+Execute the file owned by the guardsmen group in /media/Bibliotheca, as the owning user.
+The flag is the code name provided after a successful access attempt.
+...
+The user tyborc is unable to access the directory:
+/media/Bibliotheca/Bibliotheca_unus
+Why? Identify the permission missing in standard verb form.
+execute
+- ls -l
+- what permission do yo uneed to modify things 'execute'
+Locate the file in /media/Bibliotheca that Inquisitor Quixos has sole modification rights on.
+The flag is the absolute path for the file.
+/media/Bibliotheca/Bibliotheca_duo/Codex_Hereticus
+- ls -lisa Bibliotheca_duo/
+Quixos has only right in B_duo/C-Here
+Read the concealed file within /media/Bibliotheca
+Expand your mind
+- find . -type f -name '.*'
+- cat ./Bibliotheca_duo/.Secrets_of_the_Immaterium
+Find the warp and read its secrets for the flag.
+Ph'nglui mglw'nafh Cthulhu
+- find . -type f -name '.*'
+- cat ./Bibliotheca_duo/.warp2/.warp5/warp5/.warp3/warp2/.secrets
+Using the commands ls and grep, identify the number of directories in /etc/ that end in .d
+27
+ls | grep -e *.d
+File: home/garviel/numbers
+Use regular expressions to match patterns similar to an IP address.
+The answer is the count/number of lines that match in the file.
+78
+- garviel@terra:~$ cat numbers | grep -E '^([0-9]{1,3}\.){3}[0-9]{1,3}$' | wc
+File: home/garviel/numbers
+Use regular expressions to match valid IP addresses. The flag is the number of addresses.
+HINT: What are the valid numerical values of each octet in an IP address?
+18
+- cat numbers | grep -Eo "^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][ 0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$" | wc -l
+File: home/garviel/numbers
+Use regular expressions to match patterns that look similar to a MAC Address. Flag is a count of the number of matches.
+HINT: This is a loose match! Some of these results won't be true MAC addresses.
+Flag format: ####
+4877
+- cat numbers | grep -E '^..\-..\-..\-..\-..\-..$' | wc -l
+File: home/garviel/numbers
+Use awk to print lines:
+>= 420 AND <=1337
+The flag is a SHA512 hash of the output.
+e62ff70d772ef0977f4f8fe1751fda5689ce1daf1fabc6d0cc49da234d02719986c0acb97f582166170a5a1f418e854602a5eb98c773655906a3f85440c37d39
+- cat numbers | awk 'NR >= 420 && NR <=1337 {print$1}' | sha512sum
+File: home/garviel/connections
+Use awk to create a separate CSV (comma separated value) file that contains columns 1-6.
+The flag is an MD5 hash of the new file
+Hint: Look at #fields on line 6 in the file to understand column layout.
+Hint: This is a Zeek (formally known as Bro) connection log file in TSV format. Click This Link to learn about its formatting.
+Sample Output
+- cat connections | awk ' {print $1, $2, $3, $4, $5, $6}' OFS="," connections > outfile
+- chmod 777 outfile
+- md5sum outfile
+Directory: home/garviel/Battlefield/
+The garviel user has a minefield map and controls to a Titan War Machine located in their home directory. Interpret the Titan Controls to navigate the minefield and annihilate the target.
+Enter the correct movement codes to make the Titan obliterate the target.
+AAAAA3AAA3AAAABAABAAAA
+- cat minefield_map
+- nano minefield map 
+- save and chmod 777
+The flag resides in $HOME/paths... you just need to determine which flag it is. The flag sits next to a string matching the name of a $PATH/binary on your system.
+Hint: The correct binary is not echo
+- cat paths | awk 'NR==FNR{a[$1,$1];next} ($1,$1) in a' paths
+File: home/garviel/numbers
+Use regular expressions to find Locally Administered or Universally Administered Unicast MAC addresses.
+Give the count of Locally and Universally Administersed MAC addresses as the answer.
+HINT: What characters specifically define a Locally or Universally Administered Unicast MAC Address?
+178
+- cat numbers | egrep '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$' | awk -F '-' {'print $1'} | awk -F '' {'print $2'} | egrep '[048C26AE]' | wc -l
+- 
+FILE: /home/garviel/Inquisition_Targets
+Identify heresy by comparing the Inquisition_Targets file to members of the Guardsmen group.
+HINT: Reformat and clean up the data before it is compared. awk and sort are your best friends!
+The flag is the number of heretics on the system.
+...
+What registry hive contains all machine settings?
+HKLM
+What registry hive contains all user settings?
+HKU
+What registry hive contains only the currently logged-in user's settings?
+HKCU
+The HKEY_CURRENT_USER registry hive is a symbolic link to another registry subkey. What is the subkey that it is linked to?
+Flag format: HIVE\SID.
+HKEY_USERS\S-1-5-21-3815887625-636170824-1205406010-1004
+What PowerShell command will list all the subkeys and contents in the current directory and/or will list all the subkeys and the contents of a directory you specify?
+get-childitem
+What PowerShell command will list only the contents of a registry key or subkey?
+get-item
+What registry subkey runs every time the machine reboots? The flag is the full path, using PowerShell.
+HKLM:\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN
+What registry subkey runs every time a user logs on? The flag is the full path, using PowerShell.
+HKCU\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN
+What registry subkey runs a single time, then deletes its value once the machine reboots? The flag is the full path, using PowerShell.
+HKLM:\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
+What registry subkey runs a single time, then deletes its value when a user logs on? The flag is the full path, using PowerShell.
+HKCU\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE
+What is the value inside of the registry subkey from your previous challenge named registry_basics_7?
+C:\malware.exe
+get-itemproperty 'HKLM:\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN'
+What is the value inside of the registry subkey that loads every time the "Student" user logs on?
+C:\botnet.exe
+- Get-Item 'REGISTRY::HKEY_USERS\*\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUN'
+What is the value inside of the registry subkey from registry_basics_9?
+C:\virus.exe
+get-itemproperty 'HKLM:\SYSTEM\CURRENTCONTROLSET\ENUM\USBSTOR'
+What is the value inside of the registry subkey that loads a single time when the "student" user logs on?
+C:\worm.exe
+- Get-Item 'REGISTRY::HKEY_USERS\*\SOFTWARE\MICROSOFT\WINDOWS\CURRENTVERSION\RUNONCE'
+Figure out the manufacturer's name of the only USB drive that was plugged into this machine.
+SanDisk9834
+get-itemproperty 'HKLM:\SYSTEM\CURRENTCONTROLSET\ENUM\USBSTOR'
+What suspicious user profile, found in the registry, has connected to this machine?
+Hacker_McHackerson
+get-childitem 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\ProfileList'
+What suspicious wireless network, found in the registry, has this system connected to?
+Terror_cafe_network
+get-childitem 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Networklist\Profiles'
+Every file on a Windows system has attributes. What does the d attribute mean?
+Directory
+Every file on a Windows system has attributes. What does the h attribute mean?
+hidden
+What PowerShell command will list all files in the current directory, regardless of their attributes?
+get-childitem -force
+What PowerShell command will give you the sha512 hash of a file?
+get-filehash -algorithm sha512
+What PowerShell command will list permissions of a file?
+get-acl
+What Windows file maps hostnames to IP addresses?
+hosts
+Which group has ReadandExecute (RX) permissions to the file listed in the previous challenge, File_System_Basics_6?
+get-acl hosts | format-list
+BUILTIN\Users
+C:\Windows\System32\drivers\etc> (get-acl .\hosts).Access
+Find the last five characters of the MD5 hash of the hosts file.
+7566D
+get-filehash hosts -algorithm md5
+Examine the readme file somewhere in the CTF user’s home directory.
+123456
+C:\Users\CTF\Favorites> cat .\README
+There is a hidden directory in the CTF user's home directory. The directory contains a file. Read the file.
+ketchup
+C:\Users\CTF> get-childitem -path [rs]* -force
+cd secretsauce
+cat .\saucey
+Find a file in a directory on the desktop with spaces in it.
+HINT: If you like to type the full names and paths of files, you better look for a shortcut.
+987654321
+C:\Users\CTF\Desktop\z
+cat .\spaces.txt
+Find the Alternate Data Stream in the CTF user's home, and read it.
+P455W0RD
+-go to cmd
+-andy.dwyer@FILE-SERVER C:\Users\CTF\Documents>dir /R
+-andy.dwyer@FILE-SERVER C:\Users\CTF\Documents>more < nothing_here:hidden:$DATA
+"Fortune cookies" have been left around the system so that you won't find the hidden password...
+Get-childItem Fortune -force -Recurse -erroraction silentlycontinue
+fortune_cookie
+-get out of PS with "cmd"
+- use "dir /R"
+- more < "insert file name"
+- DONT FORGET go back to PS
+There are plenty of phish in the C:\, but sometimes they're hidden in plain site.
+Find the phish.
+phi5hy
+C:\Users\CTF\Documents\WWW>
+gci -force -verbose -Recurse
+What is the first process to spawn on Windows systems after the kernel loads?
+system
+What is the Process ID (PID) of the first Windows process?
+4
+What is the second boot process to spawn, that then spawns csrss in both session 0 and session 1?
+smss - session manager subsystems
+What session ID does Windows services operate in?
+0
+What process creates access tokens?
+lsass - local security Authority Subsystem
+What is the parent process to all svchosts?
+services
+What process is waiting with high priority for the Secure Attention Sequence (SAS)?
+winlogon
+What user space process spawns explorer, then dies?
+userinit
+What is the name of the bootloader we are using on all of the Windows machines in this environment?
+winload.exe
+bcdecit /enum
+Based on the boot loader from Init_9, which firmware are we using (BIOS or UEFI) in our environment?
+BIOS
+The path will show as winload. efi if its EFI and winload.exe if its native BIOS. We can also get the same from under 'Windows Boot Loader', if the path is
+'\Windows\system32\winload.exe' then it is native BIOS mode, and if the path is
+'\Windows\system32\winload. efi' then it is EFI.
+What file saves the memory state to the hard drive when going into hibernation?
+hiberfil.sys
+bcdedit /enum all
+Resume from Hibernate
+filepath
+What bootloader is responsible for restoring the system to its original state after hibernation?
+Winresume.exe
+The system is booting into safe mode. Identify the flag from the command-line output.
+...
+Solve the following equation:
+0x31A - 0x21B
+Enter the flag in Hexadecimal form.
+0xFF
+- bombadil@minas-tirith:~$ echo $((0x31A - 0x21B))
+255
+- bombadil@minas-tirith:~$ printf '%x\n' 255
+FF
+or 
+- bombadil@minas-tirith:~$ printf '%x\n' $((0x31A - 0x21B))
+How many bits are in a nibble, and a byte?
+4,8
+How many bits does a single Hexadecimal character represent?
+4
+Each hex digit contains a value of 8 bits when used to represent memory.
+How many bytes could the range 0x00000000 - 0x00000010 contain?
+17
+How large is the Master Boot Record and what directory is it located in?
+Flag format: #InBytes,directory
+512,/dev
+Identify which of your Linux machines is using SysV Initialization.
+Minas_Tirith
+cat /etc/inittab
+What are the maximum and minimum value a single Hexadecimal digit can contain?
+Enter the values in Linux Hexadecimal Numerical Constant form.
+Flag format: min-max
+0x0-0xF
+What are the maximum and minimum values, in decimal notation, that a single Hexadecimal digit can represent?
+Flag format: min-max
+0-15
+Solve the following equation:
+0x31A + 0x43
+Enter the flag in Hexadecimal form.
+0x35d
+- printf '%x\n' $((0x31A + 0x43))
+Execute : sudo cat /dev/vda | xxd -l 32 -c 0x10 -g 1
+What are the values contained in hex positions 0x00000001 through 0x00000008?
+Flag format: Value,Value,Value
+63,90,8e,d0,31,e4,8e,d8
+Identify the Linux Kernel being loaded by the Grub, by examining its configuration.
+Enter the command used by the Grub, and the full path to the Kernel, as the flag.
+Flag Format: command,kernel location
+linux,/boot/vmlinuz-4.9.0-12-amd64 
+Locate the master boot record for one of the Linux machines and read it with xxd
+What programming language is the MBR written in?
+HINT: Look at the first three bytes
+assembly
+The file /home/bombadil/mbroken is a copy of an MBR from another machine.
+Hash the first partition of the file using md5sum. The flag is the hash.
+2a5948fad4ec68170b23faaa2a16cef8
+- dd if=mbroken of=MBRcopy skip=446 bs=1 count=16
+- this breaks down to first partition
+- md5sum MBRcopy
+The file /home/bombadil/mbroken is a copy of an MBR from another machine.
+You will find the "word" GRUB in the output, hash using md5sum.
+The flag is the entire hash.
+5fa690cb0f0789cbc57decfd096a503e
+- echo -n GRUB | md5sum
+The file /home/bombadil/mbroken is a copy of an MBR from another machine.
+Hash only the Bootstrap section of the MBR using md5sum. The flag is the entire hash.
+d59a68c7b6d62ecaa1376dfb73a3b7be
+- dd if=mbroken of=MBRcopy skip=0 bs=1 count=446
+- md5sum MBRcopy
+Identity the default run level on the SysV Init Linux machine.
+2
+- bombadil@minas-tirith:/etc/rc3.d$ who -r - queries run levels
+What is the last script to run when the command init 6 is executed?
+/etc/init.d/reboot
+- Reboot is run level 6, look in FG
+What run levels start the daemon that allows remote connections over port 22?
+2,3,4,5
+- port 22 - ssh
+- /etc/init.d
+- cat ssh 
+- Default-Start: 2 3 4 5 = run levels
+Identify the file symbolically-linked to init on the SystemD init machine.
+/lib/systemd/systemd
+- cd /sbin 
+- ls -l
+looks like this - init -> /lib/systemd/systemd
+What is the default target on the SystemD machine and where is it actually located?
+graphical.target,/lib/systemd/system/graphical.target
+What unit does the graphical.target want to start, based solely on its configuration file?
+HINT: Targets deal with which init system? Which machine should you be looking for this flag, on?
+display-manager.service
+- cat graphical.target
+- Wants=display-manager.service
+What dependency to graphical.target will stop it from executing if it fails to start, based solely on its static configuration file?
+multi-user.target
+- cat graphical.target
+- Requires=multi-user.target
+How many wants dependencies does SystemD actually recognize for the default.target
+HINT: Use the systemctl command with some arguments to make life easier.
+7
+- cat graphical.target
+- Documentation=man:systemd.special(7)
+What is the full path to the binary used for standard message logging?
+...
+What Sysinternals tool is used to investigate processes?
+procexp.exe
+What Sysinternals tool shows malware persistence locations in tabs within its GUI?
+autoruns.exe
+What is the full path to the binary used for standard message logging?
+HINT: Standard message logging is standardized across UNIX systems.
+...
+What Sysinternals tool can be used to investigate network connection attempts?
+tcpview.exe
+What Sysinternals tool can view permissions?
+accesschk.exe
+What Sysinternals tool allows us to view and modify handles?
+handle.exe
+What is the default Windows user directory for files downloaded from the internet? The flag is the folder name only.
+downloads
+What is the default Windows download directory that everyone has access to? The flag is the absolute path to the directory.
+C:\Users\Public\Downloads
+What Sysinternals tool shows service load order?
+LoadOrder
+What is the service name of Windows Defender Firewall?
+MpsSvc.exe
+What SysInternals tool reports .dlls loaded into processes?
+ListDLLs
+There is malware on the system that is named similarly to a legitimate Windows executable. There is a .dll in the folder that the malware runs from. The flag is the name of the .dll.
+...
+You notice that there is an annoying pop up happening regularly. Investigate the process causing it. The flag is the name of the executable.
+McAfeeFireTray.exe
+-use procexp.exe
+-wait for thing to popup and suspend
+Determine what is sending out a SYN_SENT message. The flag is the name of the executable.
+HINT: Use a Sysinternals tool.
+10.20.0.5 52085 10.11.0.202 443 SynSent Internet
+Malware uses names of legit processes to obfuscate itself. Give the flag located in Kerberos’ registry subkey.
+HINT: Use Sysinternals tools.
+Creds:
+Machine: Workstation1 (RDP from Admin-Station)login: studentpassword: password
+C:\Windows\srvany.exe
+...
+There is malware named TotallyLegit. Find its binary location and there will be a file in that directory. Read the file.
+...
+Find the McAfeeFireTray.exe. There is a file in that directory. The flag is inside.
+StrongBad
+- used proexp to see randomn file popping up
+PS C:\Program Files\Windows Defender Advanced Threat Protection> cat '.\It''s_Here.txt'
+What are the permissions for NT SERVICE\TrustedInstaller on spoolsv.exe? Copy the permissions from your shell.
+...
+What is the PATH listed in the output when we find the handle for spoolsv.exe?
+...
+In what Load Order Group is the Windows Firewall service?
+6666
+networkprovider
+-use loadord.exe
+-look for mpssvc
+What is the first .dll associated with winlogon.exe? Provide the name of the .dll only, not the /absolute/path
+...
+While examining the Windows Defender Firewall, what is the LogAllowedConnections setting set to, for the Public profile?
+...
+A nonstandard port has been opened by possible malware on the system. Identify the port.
+6666
+C:\> Get-NetTCPConnection
+Determine what mechanism opened the port from hidden_processes_7. The flag is the name of the file.
+legit_script.ps1
+-use tcpview
+-look for port 6666
+-then go to procexp
+-open all powershells
+-look for suspicious stuff
+Identify the flag from the file in hidden_processes_8.
+N0t_L3g1T_Ammiright
+C:\Windows\System32> cat .\legit_script.ps1
+-use file path from procexp
+What Sysinternals tool will allow you to view a file's manifest?
+sigcheck
+What is the RequestedExecutionLevel for an application to run with the same permissions as the process that started it?
+asinvoker
+What RequestedExecutionLevel will prompt the user for Administrator credentials if they're not a member of the Administrator's group?
+requireAdministrator
+What registry key holds UAC values?
+HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+The flag is the RequestedExecutionLevel of the schtasks.exe file.
+asinvoker
+cat schtasks.exe
+-look for requestedprivileges
+Determine which UAC subkey property shows whether UAC is enabled or not. The flag is the data value in that property.
+4919
+- The registry keys are found in HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+- get-itemproperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+- EnableLUA : 4919
+Provide the name of the UAC [Registry subkey] property that determines what level UAC is set to for admin privileges (Example UAC levels: Default, Always, Notify).
+ConsentPromptBehaviorAdmin
+- get-itemproperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System | findstr Admin
+Query the registry subkey where UAC settings are stored, and provide the flag.
+NiceJob
+- get-itemproperty HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+What command-line (cmd) command will show service information?
+sc
+What command-line (cmd) command will show all services, running or not running?
+sc queryex type=service state=all
+What PowerShell command will list all services?
+get-service
+What registry location holds all service data?
+HKLM\System\CurrentControlSet\Services
+What registry subkey holds a service's .dll location
+parameters
+-use regedit
+-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services - parameters
+Services have a name and display name, which could be different. What is the service name of the only Totally-Legit service?
+Legit
+Figure out the SID of the only Totally-Legit service.
+Example: S-1-5-80-159957745-2084983471-2137709666-960844832-[1182961511]
+Submit only the [bracketed] portion of the SID.
+1182961511
+-go to cmd
+#VALUE!
+What is the process ID (PID) of the SysV Init daemon?
+1
+bombadil@minas-tirith:~$ ps --ppid 1 -lf
+Identify all of the arguments given to the ntpd daemon (service) using ps.
+-p /var/run/ntpd.pid -g -u 105:109
+- ps aux | grep ntpd
+How many child processes did SysV Init daemon spawn?
+19
+- ps --ppid 1 | wc
+- subtract 2 for NO REASON
+What is the parent process to Bombadil’s Bash process?
+sshd
+bombadil@minas-tirith:~$ htop
+-look at bombadil - bash
+Identify the file mapped to the fourth file descriptor (handle) of the cron process.
+/run/crond.pid
+- sudo lsof | grep cron
+Identify the permissions that cron has on the file identified in Processes 5.
+HINT: Read the man page for lsof to understand permissions.
+r,w
+- look at fg
+Identify the names of the orphan processes on the SysV system.
+Aragorn,BruceWayne,Eowyn,Tolkien
+- htop, f5
+look for things that literally say ORPHAN...
+Locate zombie processes on the SysV system.
+Identify the zombie processes' parent process.
+/bin/funk
+- htop , f5
+look for Zs to populate 
+Locate the strange open port on the SysV system.
+Identify the command line executable and its arguments.
+/bin/netcat -lp 9999
+- htop 
+- look for weird port
+Examine the process list to find the ssh process. Then, identify the symbolic link to the absolute path for its executable in the /proc directory.
+/proc/1595/exe,/usr/sbin/sshd
+-htop - look for sshd
+- find the PID
+-go to /proc directory
+-cd in 1595, looking for exeutable
+Identify the file that contains udp connection information. Identify the process using port 123.
+- ntpd,19,u
+- sudo lsof -i -nP
+What Sysinternals tool will allow you to read the SQLite3 database containing the web history of chrome?
+strings.exe
+What is the registry location of recent docs for the current user?
+HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs
+BAM settings are stored in different registry locations based on the version of Windows 10. What version of Windows 10 is workstation2 running?
+1803
+Figure out the last access time of the hosts file.
+9/22/2022
+ConsoleHost_history.txt
+- PS C:\Users\andy.dwyer> Get-Childitem -Recurse C:\Users\*\AppData\Roaming\Microsoft\Windows\ -ErrorAction Continue | findstr txt
+What is the literal path of the prefetch directory?
+C:\Windows\Prefetch
+In the Recycle Bin, there is a file that contains the actual contents of the recycled file. What are the first two characters of this filename?
+$R
+In the Recycle Bin, there is a file that contains the original filename, path, file size, and when the file was deleted. What are the first two characters of this filename?
+$I
+What are the first 8 characters of the Globally Unique Identifier (GUID) used to list applications found in the UserAssist registry key (Windows 7 and later)?
+CEBFF5CD
+What cipher method are UserAssist files encoded in?
+rot13
+What main Windows log would show invalid login attempts?
+Security - (Failed User Account Login 4625)
+What main Windows log will show whether Windows updates were applied recently?
+System
+When reading logs, you may notice ... at the end of the line where the message is truncated. What format-table switch/argument will display the entire output?
+-wrap
+Find the questionable website that the user browsed to (using Chrome), that appears to be malicious.
+https://www.exploitdb.com
+- C:\> $History = (Get-Content 'C:\Users\student\AppData\Local\Google\Chrome\User Data\Default\History') -replace "[^a-zA-Z0-9\.\:\/]",""
+- PS C:\> $History| Select-String -Pattern "(https|http):\/\/[a-zA-Z_0-9]+\.\w+[\.]?\w+" -AllMatches|foreach {$_.Matches.Groups[0].Value}| ft
+There is a file that was recently opened that may contain PII.
+Get the flag from the contents of the file.
+Flag, Found A.
+- Get-Item "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" | select -Expand property | ForEach-Object { >> [System.Text.Encoding]::Default.GetString((Get-ItemProperty -Path "REGISTRY::HKEY_USERS\*\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs\.txt" -Name $_).$_)
+- C:\Users\student\Documents> cat .\3-14-24.txt
+Enter the full path of the program that was run on this computer from an abnormal location.
+C:\Windows\Temp\bad_intentions.exe
+- Get-Item HKLM:\SYSTEM\CurrentControlSet\Services\bam\UserSettings\*
+Enter the name of the questionable file in the prefetch folder.
+BAD_INTENTIONS.EXE-8F2806FC.pf
+- Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue
+What is the creation time of the questionable file in the prefetch folder?
+2/23/2022
+- Get-Childitem -Path 'C:\Windows\Prefetch' -ErrorAction Continue
+Recover the flag from the Recycle Bin. Enter the name of the recycle bin file that contained the contents of the flag, and the contents of the deleted file.
+$RZVLP5M.txt,DontTrashMeyo
+- go to home dir "cd \
+- "ls -force" to see hidden recycle 
+#VALUE!
+Find the file in the jump list location that might allow privilege escalation.
+UIDPWD.txt
+- Get-Childitem -Recurse C:\Users\*\AppData\Roaming\Microsoft\Windows\Recent -ErrorAction Continue | select FullName, LastAccessTime
+- just look for something that looks like a phuqin file...
+- cat C:\Users\*\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\*
+Check event logs for a flag string.
+3v3nt_L0g'
+- PS C:\Users\andy.dwyer> Get-EventLog -LogName System | ft -wrap | findstr /i flag
+- part of the event:'......................the Flag is: 3v3nt_L0g'
+File: /home/garviel/output.xml
+Identify the XML element name in the output below
+<scaninfo type="syn" protocol="tcp" numservices="200" services="1-200"/>
+<scaninfo/>
+Identify one of the XML attributes in the output below
+<scaninfo type="syn" protocol="tcp" numservices="200"
+services="1-200"
+What RFC is Syslog?
+5424
+What is the numerical code assigned to the facility dealing with authorization?
+4
+How many severity codes are defined in the standard that defines syslog?
+8
+What severity is assigned to system instability messages?
+0 - Emergency
+In the legacy rules section of the file, what facility is logged to 0.log?
+kernel
+In the legacy rules section of the file, how many severities are logged to 0.log?
+8
+- " * " = wildcard means all of them
+In the legacy rules section of the file, how many severities are logged to 4min.log?
+List the severities from highest severity (lowest numerical listed) to lowest severity (highest numerical listed) using their severity name.
+emergency,alert,critical,error,warning
+- 4min = go
+In the legacy rules section of the file, how many severities are logged to 4sig.log?
+List the severities from highest severity (lowest numerical listed) to lowest severity (highest numerical listed), using their severity name.
+notice,informational,debug
+-sig - signaling
+What is being logged in not.log?
+Provide the facilities from lowest facility to highest facility numerically, and the severity being logged. (List only the first word for each.)
+mail,clock,ntp,notice
+- look at downloaded file
+- 2,9,12.=5 /var/log/not.log - look at extended list
+What facilities and what severities are being sent to a remote server over a reliable connection using port 514?
+Provide the facility names, number of severities, and the correct destination IP address.
+...
+Use the answer from Syslog 6 for this question.
+Do logs that match this filter ever get saved on the local machine?
+...
+What messages are being sent to 10.84.0.1?
+Provide the facility number, the number of severity codes, and Layer 4 connection type as the answer.
+...
+File: /home/garviel/output.xml
+Parse all of the IP addresses from the file using XPATH queries
+https://www.w3schools.com/xml/xpath_intro.asp
+HINT:
+http://xpather.com/
+http://www.whitebeam.org/library/guide/TechNotes/xpathtestbed.rhtm
+Sample Output (without piping to MD5SUM)
+addr="XXX.xxx.xxx.xxx" addr="XXX.xxx.xxx.xxx" addr="XXX.xxx.xxx.xxx" addr="XXX.xxx.xxx.xxx" addr="XXX.xxx.xxx.xxx" addr="XXX.xxx.xxx.xxx" --TRIMMED--
+Flag format: md5 hash of output
+...
+What Volatility plugin will dump a process to an executable file sample?
+procdump
+What Volatility plugin will extract command history by scanning for _COMMAND_HISTORY?
+cmdscan
+- vol -f .\cridex.vmem --profile=WinXPSP2x86 -h | findstr command
+What Volatility plugin will show driver objects?
+driverscan
+- vol -f .\cridex.vmem --profile=WinXPSP2x86 -h | findstr driver
+What command do you run to find which memory profile to use with a memory image?
+imageinfo
+What switch/argument will list all plugins for Volatility?
+-h
+In terms of Volatile Data, what locations are the MOST volatile?
+CPU registers, cache
+What is the 12th plugin listed in the Volatility help menu?
+cmdscan
+What profile do you use in conjunction with this memory image?
+0zapftis.vmem
+WinXPSP2x86
+What command did the attacker type to check the status of the malware?
+sc query malware
+- run "vol -f .\0zapftis.vmem --profile=WinXPSP2x86 cmdscan"
+What are the last 7 digits of the memory offset for the driver used by the malware?
+1a498b8
+- run "vol -f .\0zapftis.vmem --profile=WinXPSP2x86 driverscan" 
+The process running under PID 544 seems malicious. What is the md5hash of the executable?
+6CEE14703054E226E87A963372F767AA
+- run "vol -f .\0zapftis.vmem --profile=WinXPSP2x86 pslist' to get PID 544
+- run "vol -f .\0zapftis.vmem --profile=WinXPSP2x86 procdump -p 544 -D ." to get location of cmd.exe
+- run "Get-FileHash .\executable.544.exe -Algorithm MD5" to get hash
+What remote IP and port did the system connect to?
+Flag format: ip:port
+172.16.98.1:6666
+- run "vol -f .\0zapftis.vmem --profile=WinXPSP2x86 connscan' 
+What is the domain portion of the following SID:
+S-1-5-21-1004336348-1177238915-682003330-1000
+21-1004336348-1177238915-682003330
+What PowerShell command will list domain groups?
+Get-ADGroup
+What PowerShell command will list all users and their default properties?
+Get-ADUser -Filter 'Name -like "*"'
+What PowerShell command will allow you to search Active Directory accounts for expired accounts without having to create a filter?
+search-adaccount
+Find the expired accounts that aren't disabled. List the last names in Alphabetical Order, separated with a comma, and no space between.
+krause,page
+- Get-ADUser -Filter 'enabled -eq $true' -Properties AccountExpirationDate | Select sAMAccountName, distinguishedName, AccountExpirationDate | findstr 25
+Find the unprofessional email addresses. List the email's domain. 
+ashleymadison.com
+- Get-ADUser -Filter 'Name -like "*"' -Properties EmailAddress | select EmailAddress, Domain*
+The flag is the unprofessionally-named file located somewhere on the Warrior Share.
+Connect to the Warrior Share:
+net use * "\\file-server\warrior share"
+lulz.pdf
+- ls -R
+Find the short name of the domain in which this server is a part of.
+army?
+- (gwmi win32_computersystem).Domain
+- Get-ADForest
+The flag is the name of the file where someone is requesting modified access rights.
+Connect to the Warrior Share:
+net use * "\\file-server\warrior share"
+14287.pdf
+- ls -Rs -R
+What is the RID of the krbtgt account.
+Example: S-1-5-21-1004336348-1177238915-682003330-[501]
+502
+- Get-ADUser -Identity 'krbtgt' -Properties Description
+- RID is last 3 of SID
+How many users are members of the Domain Admins group?
+1
+- Get-ADGroupMember -Identity "Domain Admins"
+How many total users are members of the Domain Admins group?
+14
+- Get-ADGroupMember -Identity "Domain Admins" -recursive
+Find the following three accounts:
+two accounts with passwords that never expire
+one account that has its password stored using reversible encryption
+List the last names in Alphabetical Order, comma-separated, no spaces. Do not list built-in accounts.
+- Get-ADUser -filter * -properties PasswordLastSet, PasswordExpired, PasswordNeverExpires | sort Name | ft Name, PasswordLastSet, PasswordExpired, PasswordNeverExpires
+- Get-ADUser -Filter 'userAccountControl -band 128' -Properties userAccountControl
+The flag is the name of the user who is requesting modified access rights.
+Karen Nance
+- Get-AdGroupMember -identity "Domain Admins" -Recursive | %{Get-ADUser -identity $_.DistinguishedName}
+Find the accounts that contain unprofessional information in the description.
+Brandywine,Jimenez
+Get-ADUser -Filter 'Name -like "*"' -Properties Description | select Description,
+Name
+Find the following three accounts:
+- two accounts with passwords that never expire
+- one account that has its password stored using reversible encryption
+phone_matrix.xlsx
+- ls -r
+Continue to follow the insider trail to find additional insider threats and their compromised mission.
+Tiiffany.Bellacino
+- Get-ADUser -Identity 'Karen.Nance' -Properties *
+- find the weird shit
+- used rot13 to decode and found bitch ass tiffany
+- Get-ADUser -filter * -Properties * | findstr Tiffany
+Continue to follow the insider trail to find additional insider threats and their compromised mission.
+The flag is the username resulting from assembling clues within a user's records.
+Damian.Lewis
+- Get-ADUser -Identity 'Tiffany.Bellacino' -Properties *
+- find abnormal stuff
+- Get-ADUser -filter * | findstr wis
+Continue to follow the insider trail to find additional insider threats and their compromised mission.
+The flag is the full name of the insider threat identified.
+HINT: Search the Active Directory record for the user identified in follow_insider_trail_2.
+- Isiah.Jesus
+- Get-ADUser -Identity 'Damian.Lewis' -Properties *
+- find weird
+- Get-ADUser -filter * | findstr Isiah
+Continue to follow the insider trail to find additional insider threats and their compromised mission. This flag is a video link.
+Hint: Search the Active Directory record for the user identified in follow_insider_trail_3.
+https://www.youtube.com/watch?v=dQw4w9WgXcQ
+- Get-ADUser -Identity 'Isiah.Jesus' -Properties *
+- there was some weird hash stuff
+-aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ==
+- "==" means link
+- user cyberchef in ctf for base64 decode
+
 
 
 
